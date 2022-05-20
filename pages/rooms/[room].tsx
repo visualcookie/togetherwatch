@@ -62,7 +62,7 @@ const RoomPage: NextPage = () => {
 
   const onPlayerReady = (event: any) => {
     setVideoPlayer(event.target)
-    //event.target.pauseVideo()
+    event.target.pauseVideo()
   }
 
   const onPauseVideo = () => socketClient?.emit(events.PAUSE_VIDEO)
@@ -72,7 +72,7 @@ const RoomPage: NextPage = () => {
     <>
       <Navbar socketClient={socketClient} />
 
-      <main className="flex justify-center">
+      <main className="flex justify-center my-20">
         <YouTube
           className="w-8/12"
           iframeClassName="w-full h-full aspect-[16/9]"

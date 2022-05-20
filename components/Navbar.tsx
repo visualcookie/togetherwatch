@@ -44,36 +44,39 @@ const Navbar = (props: Props) => {
     props.socketClient?.emit(events.ADD_NEW_VIDEO, id)
   }
 
+  console.log(isDropdownOpen)
+
   return (
-    <div className="navbar mb-16 bg-base-300">
-      <div className="flex-1 px-2 lg:flex-none">
+    <div className="navbar bg-base-300">
+      <div className="navbar-start">
         <a className="btn btn-ghost normal-case text-xl">togetherwatch</a>
       </div>
-      <div className="flex justify-center flex-1 px-2">
+      <div className="navbar-center hidden lg:flex">
         <div className="form-control relative">
           <input
             type="url"
             placeholder="Enter YouTube URL ..."
             className="input input-bordered w-96"
             onChange={getYoutubeVideoInfo}
+            onBlur={() => setIsDropdownOpen(false)}
           />
           <div className={classNames('dropdown absolute bottom-0 -left-[20%]', isDropdownOpen && 'dropdown-open')}>
             <div
               tabIndex={0}
-              className="dropdown-content flex items-center w-[32rem] mt-3 bg-base-300"
+              className="dropdown-content hover:cursor-pointer grid grid-cols-2 gap-4 w-[32rem] mt-3 bg-base-300 shadow rounded-box overflow-hidden"
               onClick={() => videoId && onAddVideo(videoId)}
             >
-              <figure className="w-44">
+              <figure>
                 <img src={videoInfo?.thumbnail.url} alt={videoInfo?.title} />
               </figure>
               <div className="px-4 py-4">
-                <p>{videoInfo?.title}</p>
-                <p className="text-xs">{videoInfo?.publishedAt}</p>
+                <p className="line-clamp-3">{videoInfo?.title}</p>
               </div>
             </div>
           </div>
         </div>
       </div>
+      <div className="navbar-end" />
     </div>
   )
 }
