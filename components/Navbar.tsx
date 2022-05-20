@@ -44,8 +44,6 @@ const Navbar = (props: Props) => {
     props.socketClient?.emit(events.ADD_NEW_VIDEO, id)
   }
 
-  console.log(isDropdownOpen)
-
   return (
     <div className="navbar bg-base-300">
       <div className="navbar-start">

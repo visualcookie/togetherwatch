@@ -9,7 +9,6 @@ export interface IYouTubeVideoInfoReturn {
 }
 
 const filterYoutubeVideoInfo = (data: any): IYouTubeVideoInfoReturn => {
-  console.log(data)
   const { items } = data
   const { snippet } = items[0]
 
